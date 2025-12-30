@@ -5,6 +5,7 @@ interface SearchFormProps {
 }
 
 export default function SearchForm(props: SearchFormProps) {
+  
   const { onSubmit } = props;
   const handleSubmit = (formData: FormData) => {
     const topic = formData.get("topic") as string;

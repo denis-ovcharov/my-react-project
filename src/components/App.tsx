@@ -7,10 +7,10 @@ import type { Article } from '../types/article';
 import ArticleList from './ArticleList';
 import { FidgetSpinner } from 'react-loader-spinner'
 import { fetchArticles } from '../services/articleService';
-
+import { ToastContainer, toast } from 'react-toastify';
 
 export default function App() {
-
+  const notify = () => toast('Wow so easy !');
   const [articles, setArticles] = useState<Article[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -57,6 +57,7 @@ export default function App() {
       />}
       {isError && <p>Whoops, something went wrong! Please try again!</p>}
       {articles.length > 0 && <ArticleList items={articles} />}
+      <ToastContainer />
     </>
   );
 }
