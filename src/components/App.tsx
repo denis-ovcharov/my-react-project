@@ -8,6 +8,7 @@ import ArticleList from './ArticleList';
 import { FidgetSpinner } from 'react-loader-spinner'
 import { fetchArticles } from '../services/articleService';
 import { ToastContainer } from 'react-toastify';
+import OrderForm from './OrderForm';
 
 
 export default function App() {
@@ -62,7 +63,7 @@ export default function App() {
       {isError && <p>Whoops, something went wrong! Please try again!</p>}
 
       {articles.length > 0 && <ArticleList items={articles} />}
-
+        <OrderForm />
       <ToastContainer />
     </>
   );
