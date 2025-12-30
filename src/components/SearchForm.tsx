@@ -1,11 +1,10 @@
 // src/components/SearchForm.tsx
-
+import { toast } from 'react-toastify';
 interface SearchFormProps {
   onSubmit: (topic: string) => void;
 }
 
 export default function SearchForm(props: SearchFormProps) {
-  
   const { onSubmit } = props;
   const handleSubmit = (formData: FormData) => {
     const topic = formData.get("topic") as string;
@@ -13,7 +12,10 @@ export default function SearchForm(props: SearchFormProps) {
     // Якщо текстове поле порожнє, виводимо повідомлення 
 		// і припиняємо виконання функції.
     if (topic === "") {
-      alert("Please enter search topic!");
+      toast.error("Please enter search topic!", {
+        position: 'top-right',
+        theme: 'dark'
+      });
       return;
     }
     

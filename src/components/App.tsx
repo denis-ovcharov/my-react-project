@@ -7,10 +7,11 @@ import type { Article } from '../types/article';
 import ArticleList from './ArticleList';
 import { FidgetSpinner } from 'react-loader-spinner'
 import { fetchArticles } from '../services/articleService';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
+
 
 export default function App() {
-  const notify = () => toast('Wow so easy !');
+  
   const [articles, setArticles] = useState<Article[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -46,7 +47,9 @@ export default function App() {
       <Alert type="error" />
       <Button  direction = "left" variant="primary"  />
       <Button direction="right" variant="secondary" /> */}
+      
       <SearchForm onSubmit={handleSearch} />
+
       {isLoading && <FidgetSpinner
         visible={true}
         height="80"
@@ -55,8 +58,11 @@ export default function App() {
         wrapperStyle={{}}       
         wrapperClass="fidget-spinner-wrapper"       
       />}
+
       {isError && <p>Whoops, something went wrong! Please try again!</p>}
+
       {articles.length > 0 && <ArticleList items={articles} />}
+
       <ToastContainer />
     </>
   );

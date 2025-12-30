@@ -14,7 +14,7 @@ export default function Button({ direction, variant }: ButtonProps) {
     const handleClick = () => {
       setClicks(clicks + 1);
       console.log(`You clicked ${direction} button`);
-      
+
     };
   return (
     <button className={clsx(css.button, variant && css[variant])} onClick={handleClick}>
