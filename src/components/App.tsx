@@ -1,21 +1,18 @@
-// import Product from './Product';
-// import Alert from "./Alert";
-// import Button from "./Button";
-import SearchForm from './SearchForm';
-import { useState } from 'react';
-import type { Article } from '../types/article';
-import ArticleList from './ArticleList';
-import { FidgetSpinner } from 'react-loader-spinner'
-import { fetchArticles } from '../services/articleService';
-import { ToastContainer } from 'react-toastify';
-import OrderForm from './OrderForm';
-
+import { useState } from "react";
+import type { Article } from "../types/article";
+import ArticleList from "./ArticleList";
+import { FidgetSpinner } from "react-loader-spinner";
+import { fetchArticles } from "../services/articleService";
+import { ToastContainer } from "react-toastify";
+import OrderForm from "./OrderForm";
 
 export default function App() {
-  
   const [articles, setArticles] = useState<Article[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const handleSearch = async (topic: string) => {
     try {
@@ -28,13 +25,10 @@ export default function App() {
     } finally {
       setIsLoading(false);
     }
-};
-  
-  
+  };
+
   return (
     <>
-      <h1>React</h1>
-      
       {/* <Product
         name='Tacos With Lime'
         imgUrl="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?w=640"
@@ -48,22 +42,32 @@ export default function App() {
       <Alert type="error" />
       <Button  direction = "left" variant="primary"  />
       <Button direction="right" variant="secondary" /> */}
-      
-      <SearchForm onSubmit={handleSearch} />
 
-      {isLoading && <FidgetSpinner
-        visible={true}
-        height="80"
-        width="80"        
-        ariaLabel="fidget-spinner-loading"       
-        wrapperStyle={{}}       
-        wrapperClass="fidget-spinner-wrapper"       
-      />}
+      {/* <SearchForm onSubmit={handleSearch} /> */}
+
+      {isLoading && (
+        <FidgetSpinner
+          visible={true}
+          height="80"
+          width="80"
+          ariaLabel="fidget-spinner-loading"
+          wrapperStyle={{}}
+          wrapperClass="fidget-spinner-wrapper"
+        />
+      )}
 
       {isError && <p>Whoops, something went wrong! Please try again!</p>}
 
       {articles.length > 0 && <ArticleList items={articles} />}
-        <OrderForm />
+      {/* <OrderForm /> */}
+      {/* <button onClick={openModal}>Open modal</button> */}
+      {/* {isModalOpen && (
+        <Modal onClose={closeModal}>
+          <h2>Модальне вікно</h2>
+          <p>Текст модального вікна</p>
+        </Modal>)}
+      <button onClick={openModal}>Open modal 2</button> */}
+      <OrderForm />
       <ToastContainer />
     </>
   );
