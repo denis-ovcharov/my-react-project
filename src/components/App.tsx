@@ -5,6 +5,8 @@ import { FidgetSpinner } from "react-loader-spinner";
 import { fetchArticles } from "../services/articleService";
 import { ToastContainer } from "react-toastify";
 import OrderForm from "./OrderForm";
+import Modal from "./Modal";
+import SearchForm from "./SearchForm";
 
 export default function App() {
   const [articles, setArticles] = useState<Article[]>([]);
@@ -43,7 +45,7 @@ export default function App() {
       <Button  direction = "left" variant="primary"  />
       <Button direction="right" variant="secondary" /> */}
 
-      {/* <SearchForm onSubmit={handleSearch} /> */}
+      <SearchForm onSubmit={handleSearch} />
 
       {isLoading && (
         <FidgetSpinner
@@ -59,14 +61,15 @@ export default function App() {
       {isError && <p>Whoops, something went wrong! Please try again!</p>}
 
       {articles.length > 0 && <ArticleList items={articles} />}
-      {/* <OrderForm /> */}
-      {/* <button onClick={openModal}>Open modal</button> */}
-      {/* {isModalOpen && (
+
+      <button onClick={openModal}>Open modal</button>
+      {isModalOpen && (
         <Modal onClose={closeModal}>
           <h2>Модальне вікно</h2>
           <p>Текст модального вікна</p>
-        </Modal>)}
-      <button onClick={openModal}>Open modal 2</button> */}
+        </Modal>
+      )}
+      <button onClick={openModal}>Open modal 2</button>
       <OrderForm />
       <ToastContainer />
     </>
