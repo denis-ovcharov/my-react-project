@@ -1,33 +1,33 @@
-import { useState } from "react";
-import type { Article } from "../types/article";
-import ArticleList from "./ArticleList";
-import { FidgetSpinner } from "react-loader-spinner";
-import { fetchArticles } from "../services/articleService";
+// import { useState } from "react";
+// import type { Article } from "../types/article";
+// import ArticleList from "./ArticleList";
+// import { FidgetSpinner } from "react-loader-spinner";
+// import { fetchArticles } from "../services/articleService";
 import { ToastContainer } from "react-toastify";
 import OrderForm from "./OrderForm";
-import Modal from "./Modal";
-import SearchForm from "./SearchForm";
+// import Modal from "./Modal";
+// import SearchForm from "./SearchForm";
 
 export default function App() {
-  const [articles, setArticles] = useState<Article[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+  // const [articles, setArticles] = useState<Article[]>([]);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [isError, setIsError] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
+  // const openModal = () => setIsModalOpen(true);
+  // const closeModal = () => setIsModalOpen(false);
 
-  const handleSearch = async (topic: string) => {
-    try {
-      setIsLoading(true);
-      setIsError(false);
-      const data = await fetchArticles(topic);
-      setArticles(data);
-    } catch {
-      setIsError(true);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+  // const handleSearch = async (topic: string) => {
+  //   try {
+  //     setIsLoading(true);
+  //     setIsError(false);
+  //     const data = await fetchArticles(topic);
+  //     setArticles(data);
+  //   } catch {
+  //     setIsError(true);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // };
 
   return (
     <>
@@ -45,9 +45,9 @@ export default function App() {
       <Button  direction = "left" variant="primary"  />
       <Button direction="right" variant="secondary" /> */}
 
-      <SearchForm onSubmit={handleSearch} />
+      {/* <SearchForm onSubmit={handleSearch} /> */}
 
-      {isLoading && (
+      {/* {isLoading && (
         <FidgetSpinner
           visible={true}
           height="80"
@@ -56,20 +56,20 @@ export default function App() {
           wrapperStyle={{}}
           wrapperClass="fidget-spinner-wrapper"
         />
-      )}
+      )} */}
+      {/* 
+      {isError && <p>Whoops, something went wrong! Please try again!</p>} */}
 
-      {isError && <p>Whoops, something went wrong! Please try again!</p>}
+      {/* {articles.length > 0 && <ArticleList items={articles} />} */}
 
-      {articles.length > 0 && <ArticleList items={articles} />}
-
-      <button onClick={openModal}>Open modal</button>
-      {isModalOpen && (
+      {/* <button onClick={openModal}>Open modal</button> */}
+      {/* {isModalOpen && (
         <Modal onClose={closeModal}>
           <h2>Модальне вікно</h2>
           <p>Текст модального вікна</p>
         </Modal>
-      )}
-      <button onClick={openModal}>Open modal 2</button>
+      )} */}
+      {/* <button onClick={openModal}>Open modal 2</button> */}
       <OrderForm />
       <ToastContainer />
     </>

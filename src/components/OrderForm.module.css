@@ -72,3 +72,8 @@
 .button:hover {
   background-color: #0056b3;
 }
+.error {
+  color: #ee0707;
+  font-size: 10px;
+  justify-content: start;
+}
